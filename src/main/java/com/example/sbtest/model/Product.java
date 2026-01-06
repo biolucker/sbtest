@@ -30,6 +30,18 @@ public class Product {
     public Long getId() {
         return id;
     }
+    // add setters
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 
     public String getName() {
         return name;

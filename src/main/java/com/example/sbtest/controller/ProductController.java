@@ -4,12 +4,14 @@ import com.example.sbtest.model.Product;
 import com.example.sbtest.service.ProductService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @RestController
+@RequestMapping("/products")
 public class ProductController {
 
     private final ProductService productService;
@@ -17,22 +19,39 @@ public class ProductController {
     public ProductController(ProductService productService) {
         this.productService = productService;
     }
-
-    // OLD: in-memory
-    @GetMapping("/products")
-    public List<Product> getProductsInMemory() {
-        List<Product> productList = new ArrayList<>();
-
-        productList.add(new Product("Hamburguesa", 500, LocalDateTime.now()));
-        productList.add(new Product("Papas", 250, LocalDateTime.now()));
-        productList.add(new Product("Gaseosa", 100, LocalDateTime.now()));
-
-        return productList;
-    }
-
-    // NEW: MySQL-backed
-    @GetMapping("/list")
-    public List<Product> getProductsFromDatabase() {
+    // GET ALL
+    @GetMapping
+    public List<Product> getAll() {
         return productService.getAllProducts();
     }
+
+    // GET BY ID
+    @GetMapping("/{id}")
+    public Product getById(@PathVariable Long id) {
+        return productService.getProductById(id);
+    }
+
+    // CREATE
+    @PostMapping
+    public Product create(@RequestBody Product product) {
+        return productService.createProduct(product);
+    }
+
+    // UPDATE
+    @PutMapping("/{id}")
+    public Product update(
+            @PathVariable Long id,
+            @RequestBody Product product
+    ) {
+        return productService.updateProduct(id, product);
+    }
+
+    // DELETE
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Long id) {
+        productService.deleteProduct(id);
+    }
+
+
+
 }
