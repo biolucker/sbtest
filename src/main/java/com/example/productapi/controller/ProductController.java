@@ -1,13 +1,11 @@
-package com.example.sbtest.controller;
+package com.example.productapi.controller;
 
-import com.example.sbtest.model.Product;
-import com.example.sbtest.service.ProductService;
+import com.example.productapi.model.Product;
+import com.example.productapi.service.ProductService;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController

@@ -1,7 +1,7 @@
-package com.example.sbtest.service;
+package com.example.productapi.service;
 
-import com.example.sbtest.model.Product;
-import com.example.sbtest.repository.ProductRepository;
+import com.example.productapi.model.Product;
+import com.example.productapi.repository.ProductRepository;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;

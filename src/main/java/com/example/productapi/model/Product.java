@@ -1,4 +1,4 @@
-package com.example.sbtest.model;
+package com.example.productapi.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
